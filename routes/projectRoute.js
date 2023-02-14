@@ -1,5 +1,11 @@
 const express = require("express");
-
+const {
+  postProject,
+  getAllProject,
+  getSingleProject,
+} = require("../controllers/projectController");
+const Project = require("../models/projectModel");
+// const postProject = require("../controllers/projectController");
 // router
 
 const router = express.Router();
@@ -7,21 +13,15 @@ const router = express.Router();
 // routes
 
 // GET all project
-router.get("/", (req, res) => {
-  res.json({ message: "Get all projects" });
-});
+router.get("/", getAllProject);
 
 //GET a single project
 
-router.get("/:id", (req, res) => {
-  res.json({ message: "Get a single  project" });
-});
+router.get("/:id", getSingleProject);
 
 // post a new project
 
-router.post("/", (req, res) => {
-  res.json({ message: "Post a new project" });
-});
+router.post("/", postProject);
 
 // delete a  project
 

@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 app.use("/api/projects/", projectRoutes);
 
 // mongodb
+mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_KEY)
   .then(() => {
