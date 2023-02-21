@@ -6,27 +6,27 @@ const projectSchema = new Schema(
   {
     title: {
       type: String,
-      require: true,
+      required: true,
     },
     tech: {
       type: String,
-      require: true,
+      required: true,
     },
     budget: {
       type: Number,
-      require: true,
+      required: true,
     },
     duration: {
       type: Number,
-      require: true,
+      required: true,
     },
     manager: {
       type: String,
-      require: true,
+      required: true,
     },
     dev: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
   {
