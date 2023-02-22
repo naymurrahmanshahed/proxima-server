@@ -75,10 +75,49 @@ const postProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
   const { id } = req.params;
+
+  const { title, tech, duration, budget, manager, dev } = req.body;
+
+  const emptyFields = [];
+
+  if (!title) {
+    emptyFields.push("title");
+  }
+
+  if (!tech) {
+    emptyFields.push("tech");
+  }
+
+  if (!duration) {
+    emptyFields.push("duration");
+  }
+
+  if (!budget) {
+    emptyFields.push("budget");
+  }
+
+  if (!manager) {
+    emptyFields.push("manager");
+  }
+
+  if (!dev) {
+    emptyFields.push("dev");
+  }
+
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "please fill in all field", emptyFields });
+  }
+
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No Id Found" });
   }
-  const project = await Project.findOneAndUpdate({ _id: id }, { ...req.body });
+  const project = await Project.findOneAndUpdate(
+    { _id: id },
+    { ...req.body },
+    { new: true }
+  );
 
   if (!project) {
     return res.status(404).json({ error: "No Project found" });
