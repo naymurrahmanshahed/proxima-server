@@ -30,7 +30,7 @@ mongoose
   .then(() => {
     //listen for request
     app.listen(PORT, () => {
-      console.log(` conecting to mongoose Listening port ${PORT}`);
+      console.log(` conected to mongoose Listening port ${PORT}`);
     });
   })
   .catch((err) => {
